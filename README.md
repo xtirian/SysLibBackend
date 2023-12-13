@@ -1,7 +1,13 @@
 # syslibbackend-dnc
 
-//TODO
+//TODO 11/12
 
-Schemas
-models
-routes
+Schemas ok
+models ok
+routes half
+
+// TODO 12/12
+
+routes (finish)
+make middleware work
+
