@@ -11,3 +11,7 @@ routes half
 routes (finish)
 make middleware work
 
+//TODO 13/12
+
+make middleware work
+test api integration with frontend
