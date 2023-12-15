@@ -58,6 +58,13 @@ router.post("/", async (req, res) => {
 
 
 router.put('/:bookId', async (req, res) => {
+
+  if(req.params.bookId === NaN){
+    return res.status(404).json({
+      message: req.params.bookId
+    })
+  }
+
   try {
     const theBook = await bookModel.findByIdAndUpdate(
       // get the Id from params and compare with the _id
@@ -67,7 +74,8 @@ router.put('/:bookId', async (req, res) => {
       req.body, 
 
       // an option to return the updated version of the document
-      {new: true});
+      {new: true}
+      );
 
     
     
@@ -75,6 +83,7 @@ router.put('/:bookId', async (req, res) => {
   } catch (err) {
 
     console.error(err);
+
     return res.status(500).json({
       message: "Internal error, couldn't update",
     });
