@@ -3,13 +3,17 @@ const bookModel = require("../module/book.model");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const books = await bookModel.find({});
 
+  try{
+  const books = await bookModel.find({});
   if (books.length) {
     return res.status(200).json(books);
-  } else {
-    return res.status(404).json(books);
   }
+} catch(err){
+  return res.status(404).json(err);
+}
+  
+    
 });
 
 //get the book by ID
@@ -22,7 +26,7 @@ router.get("/:bookId", async (req, res) => {
 
     res.status(200).json(theBook);
   } catch (err) {
-    console.error(error);
+    console.error(err);
     res.status(500).json({
       message: "internal error",
     });
